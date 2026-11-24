@@ -1,0 +1,128 @@
+@charset "UTF-8";
+
+body {
+    background-color: rgb(253, 204, 246);
+    font-family: 'Times New Roman', Times, serif;
+}
+
+h1 {
+    text-align: center;
+    font-size: 36px;
+    color: rgba(0, 0, 0, 0.753);
+}
+
+nav {
+    background-color: rgba(45, 52, 58, 0.699);
+    font-size: 18px;
+    padding: 1px 0px;
+    border-radius: 8px;
+}
+
+.menu {
+    position: relative;
+    margin: 0px 0px 0px 45px;
+    padding: 3px;
+    list-style: none;
+    display: flex;
+    align-items: center;
+}
+
+.menu > li {
+    position: relative;
+} 
+
+.submenu {
+    display: none;
+    position: absolute;
+    list-style: none;
+    text-decoration: none;
+    margin: 4px 0px;
+    padding: 0px 0px 0px 35px;
+}
+
+a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    transition-duration: .6s;
+}
+
+.submenu a {
+    padding: 8px 12px;
+}
+
+.home > a:hover {
+    position: relative;
+    padding: 3px;
+    list-style: none;
+    display: flex;
+}
+
+a:hover {
+    background-color: rgb(45, 52, 58);
+    border-radius: 3px;
+}
+
+.menu > li:hover .submenu {
+    display: block;
+}
+
+
+
+Isso acontece porque existe um pequeno espaço entre o menu principal e o submenu. No seu código, essa distância é criada principalmente por:
+
+
+css
+margin: 4px 0px;
+Quando você move o mouse de “Categorias” para o submenu, ele pode sair da área do elemento pai antes de chegar às opções. Assim, o :hover deixa de funcionar e o submenu desaparece.
+
+1. Correção principal
+Altere sua classe .submenu para esta:
+
+
+css
+.submenu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    min-width: 200px;
+    background-color: rgb(65, 72, 79);
+    border-radius: 3px;
+    z-index: 1000;
+}
+O que foi alterado?
+top: 100% posiciona o submenu imediatamente abaixo do item principal.
+
+left: 0 alinha o submenu à esquerda do item principal.
+
+margin: 0 remove o espaço que fazia o submenu perder o foco do mouse.
+
+padding: 0 remove o recuo extra de 35px que você tinha à esquerda.
+
+z-index: 1000 mantém o submenu à frente de outros elementos da página.
+
+2. Mantenha esta regra
+
+css
+.menu > li:hover .submenu {
+    display: block;
+}
+Ela faz com que o submenu permaneça visível enquanto o mouse estiver sobre o item principal ou sobre o próprio submenu, pois ele está dentro do mesmo <li>.
+
+3. Ajuste o espaçamento das opções
+Para controlar a distância entre o texto e as bordas do submenu, use:
+
+
+css
+.submenu a {
+    padding: 8px 12px;
+}
+Isso mantém as opções compactas sem criar um espaço entre o menu principal e o submenu.
+
+Resultado: você poderá mover o mouse de “Categorias” para “Eletrônicos”, “Computadores” ou “Brinquedos e Jogos” sem que o submenu desapareça durante o movimento.
+
+

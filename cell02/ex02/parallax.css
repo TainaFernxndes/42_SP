@@ -1,0 +1,61 @@
+@charset "UTF-8";
+
+@import url('https://fonts.googleapis.com/css2?family=Changa+One:ital@0;1&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: "Changa One", sans-serif;
+}
+.img {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin: 0px;
+    padding: 0px;
+    border: none;
+    background-size: cover;
+    background-attachment: scroll;
+    background-repeat: no-repeat;
+}
+
+#q1 {
+    background-position: center center;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5)), url(../../imagens/amor.doce.jpg)
+
+}
+
+#q1 > p {
+    font-size: 70px;
+    color: pink;
+}
+
+#q2 {
+    padding: 0px 0px 10px 0px;
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    color: white;
+    font-size: 30px;
+    background-color: black;
+    height: 200px;
+}
+
+#q3 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-position: right center;
+    min-height: 100vh;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5)), url("../../imagens/Amor-Doce.webp")
+}
+
+#q3 > p {
+    font-size: 70px;
+    color: pink;
+}
